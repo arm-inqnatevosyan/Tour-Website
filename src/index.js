@@ -3,10 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Navbar from './Components/Navbar';
+import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
+import Blog from './Components/Blog';
+import Footer from './Components/Footer';
+import NotFound from './Components/NotFound';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+<Router>
+<App />
+  <Routes>
+   <Route path="/" element={<Navbar />}>
+      <Route index element={<App/>} />
+      <Route path="services" element={<Blog />} />
+      <Route path="sign-up" element={<Footer />} />
+      <Route path="*" element={<NotFound />} />
+   </Route>
+  </Routes>
+  </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
